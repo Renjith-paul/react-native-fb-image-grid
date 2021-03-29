@@ -6,15 +6,16 @@
  **/
 import React, {Component} from 'react';
 import {Text, View, Image, TouchableOpacity, StyleSheet} from 'react-native';
+import FastImage from 'react-native-fast-image'
 
 const ImageItem = (props) => {
   return props.image ? (
     <TouchableOpacity
       style={styles.image_view}
       onPress={(event) => props.onPress(props.image, props.index, event)}>
-      <Image
+      <FastImage
         style={styles.image}
-        resizeMode="cover"
+        resizeMode={FastImage.resizeMode.contain}
         source={{
           uri: props.image,
         }}
@@ -97,13 +98,15 @@ export const styles = StyleSheet.create({
   image_view: {
     flex: 1,
     margin: 2,
+    borderRadius: 20
   },
 
   image: {
     width: '100%',
     height: '100%',
-    borderRadius: 6,
-    backgroundColor: 'grey',
+    backgroundColor: '#D3D3D3',
+    borderRadius: 20,
+    padding: 5
   },
 
   item_view: {
@@ -111,7 +114,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 6,
+    borderRadius: 6
   },
 
   item_view_overlay: {
